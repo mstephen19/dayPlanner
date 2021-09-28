@@ -11,9 +11,7 @@ function displayTime() {
   console.log('is this working?');
 }
 
-//start interval once document loads
+//start interval once the document loads
 $(document).ready(function () {
   setInterval(displayTime, 500);
 });
-
-
