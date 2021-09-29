@@ -9,6 +9,7 @@ This is a web-app that allows a user to track and note down daily tasks. The tex
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Bootstrap](https://getbootstrap.com)
 * [MomentJS](https://momentjs.com/)
 * [jQuery](https://jquery.com/)
 * [Google Fonts](https://fonts.google.com/)
