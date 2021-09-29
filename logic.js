@@ -1,6 +1,7 @@
 $(document).ready(function () {
   let today = moment();
-  var hourBoxes = $('.hour');
+  const hourBoxes = $('.hour');
+  const textFields = $('.input-field');
   //console.log(hourBoxes);
 
   //display current day
@@ -12,6 +13,7 @@ $(document).ready(function () {
     let timeNow = todayOnInterval.format('HH[:]mm[:]ss');
     $('#currentTime').text(timeNow);
     //console.log('is this working?'); yes
+    return timeNow; //can now use this to .diff between current time and other times
   }
 
   //start interval once the document loads
@@ -28,18 +30,33 @@ $(document).ready(function () {
     for (let i = 0; i < hourBoxes.length; i++) {
       let getValue = hourBoxes[i].textContent;
       //console.log(getValue);
-      let changeToHrs = moment(getValue, 'HH[:]mm').format('HH');
+      let changeToMmt = moment(getValue, 'HH[:]mm'); //.format('HH mm');
       let theBox = hourBoxes[i];
       let textArea = theBox.nextElementSibling;
       //console.log(changeToHrs);
       //console.log(theBox.nextElementSibling);
-      if (changeToHrs < today.format('HH')) {
+      // if (changeToHrs < today.format('HH')) {
+      //   textArea.classList.add('past');
+      // } else if (changeToHrs == today.format('HH')) {
+      //   textArea.classList.add('present');
+      // } else {
+      //   textArea.classList.add('future');
+      // }
+
+      //play around with .diff instead of the method above
+
+      //console.log('Time now:' + today + ', Time in box:' + changeToMmt);
+      //console.log(changeToHrs.diff(today, 'hours'));
+      if (changeToMmt.diff(today, 'minutes') < 0) {
         textArea.classList.add('past');
-      } else if (changeToHrs == today.format('HH')) {
-        textArea.classList.add('present');
-      } else {
+      } else if (changeToMmt.diff(today, 'hours') > 0) {
         textArea.classList.add('future');
+      } else {
+        textArea.classList.add('present');
       }
     }
   }
+
+  
+  function saveOnLoad() {}
 });
