@@ -107,6 +107,10 @@ $(document).ready(function () {
     }
   });
 
+  function saveToStorage(){
+    localStorage.setItem('userTasks', JSON.stringify(userInputs));
+  }
+
   function saveOnClick(event) {
     let btnClicked = $(event.target);
     //console.log(btnClicked);
@@ -125,10 +129,29 @@ $(document).ready(function () {
         //console.log('great');
         userInputs[i].text = textContent; //+ 'it works';
         //console.log(userInputs[i].text);
-        localStorage.setItem('userTasks', JSON.stringify(userInputs));
+        saveToStorage();
       }
     }
   }
 
+  function saveAll(){
+    for (let i = 0; i < allRows.length; i++){
+      userInputs[i].text = allRows[i].childNodes[3].value
+    }
+    saveToStorage();
+    //console.log(userInputs);
+  }
+
+  function clearAll(){
+    for (let i = 0; i < allRows.length; i++){
+      allRows[i].childNodes[3].innerHTML = ''
+    }
+    saveToStorage();
+  }
+
   allRows.on('click', '.fas', saveOnClick);
+
+  $('.saveAllBtn').on('click', saveAll)
+
+  $('.clearAllBtn').on('click', clearAll)
 });
