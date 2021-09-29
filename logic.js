@@ -1,8 +1,46 @@
 $(document).ready(function () {
   let today = moment();
   const hourBoxes = $('.hour');
-  const textFields = $('.input-field');
+  const allRows = $('.row');
   //console.log(hourBoxes);
+  let userInputs = [
+    {
+      name: '9:00',
+      text: '',
+    },
+    {
+      name: '10:00',
+      text: '',
+    },
+    {
+      name: '11:00',
+      text: '',
+    },
+    {
+      name: '12:00',
+      text: '',
+    },
+    {
+      name: '13:00',
+      text: '',
+    },
+    {
+      name: '14:00',
+      text: '',
+    },
+    {
+      name: '15:00',
+      text: '',
+    },
+    {
+      name: '16:00',
+      text: '',
+    },
+    {
+      name: '17:00',
+      text: '',
+    },
+  ];
 
   //display current day
   $('#currentDay').text(today.format('DD, MMM, YYYY'));
@@ -57,6 +95,17 @@ $(document).ready(function () {
     }
   }
 
-  
-  function saveOnLoad() {}
+  function saveOnClick(event) {
+    //if object name and textcontent of hourBox match, insert textbox content into object's text:
+    //then after editing the object, save it into localstorage, dont forget JSON.stringify
+    // let btnClicked = event.target;
+    // console.log(event.target);
+    // for (let i = 0; i < userInputs.length; i++) {
+    //   if
+    // }
+  }
+
+  allRows.on('click', '.saveBtn', function () {
+    console.log('you did it');
+  });
 });
