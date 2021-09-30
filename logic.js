@@ -85,7 +85,7 @@ $(document).ready(function () {
       let changeToMmt = moment(getValue, 'HH[:]mm'); //.format('HH mm');
       let theBox = hourBoxes[i];
       let textArea = theBox.nextElementSibling;
-      //console.log(changeToHrs);
+      //console.log(changeToHrs);p
       //console.log(theBox.nextElementSibling);
       // if (changeToHrs < today.format('HH')) {
       //   textArea.classList.add('past');
@@ -97,12 +97,22 @@ $(document).ready(function () {
       //play around with .diff instead of the method above
       //console.log('Time now:' + today + ', Time in box:' + changeToMmt);
       //console.log(changeToHrs.diff(today, 'hours'));
-      if (changeToMmt.diff(today, 'minutes') < 0) {
+      // if (changeToMmt.diff(today, 'minutes') < 0) {
+      //   textArea.classList.add('past');
+      // } else if (changeToMmt.diff(today, 'hours') > 0) {
+      //   textArea.classList.add('future');
+      // } else {
+      //   textArea.classList.add('present');
+      // }
+
+      // console.log(changeToMmt.format('HH') + ': ' + changeToMmt.diff(today, 'minutes'))
+      // console.log(changeToMmt.diff(today, 'minutes') > -60)
+        if (changeToMmt.diff(today, 'minutes') < -60) {
         textArea.classList.add('past');
-      } else if (changeToMmt.diff(today, 'hours') > 0) {
-        textArea.classList.add('future');
-      } else {
+      } else if (changeToMmt.diff(today, 'minutes') >= -60 && changeToMmt.diff(today, 'minutes') < 0) {
         textArea.classList.add('present');
+      } else {
+        textArea.classList.add('future');
       }
     }
   });
